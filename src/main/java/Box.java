@@ -4,10 +4,16 @@ public class Box<T> {
     private ArrayList<T> items = new ArrayList<T>();
 
     public void putItem(final T item) {
-        items.add(item);
+        if (item != null) {
+            items.add(item);
+        }
     }
 
     public T getItem() {
-        return items.get(0);
+        try {
+            return items.get(0);
+        } catch (IndexOutOfBoundsException e) {
+            return null;
+        }
     }
 }

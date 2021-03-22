@@ -5,14 +5,16 @@ public class BoxUtil {
         dest.putItem(item);
     }
 
-    public static void copyFreshFruitFromBoxToBox(final Box<? extends Fruit> src, final Box<? super Fruit> dest) {
-        Fruit item = src.getItem();
-        if (item.getIsFresh()) {
-            dest.putItem(item);
+    public static <T extends Fruit> void copyFreshFruitFromBoxToBox(final Box<T> src, final Box<? super T> dest) {
+        T item = src.getItem();
+        if (item != null) {
+            if (item.getIsFresh()) {
+                dest.putItem(item);
+            }
         }
     }
 
-    public static void printElementFromTwoBoxes(final Box<Box> box) {
+    public static <T> void printElementFromTwoBoxes(final Box<? extends Box<T>> box) {
         System.out.println(box.getItem().getItem().toString());
     }
 
